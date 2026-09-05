@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glidex Industry | Ultra-Luxury Kitchen Hardware</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Premium Fonts: Inter for Apple-like sleekness -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        obsidian: '#030303',
+                        gold: {
+                            300: '#FDE68A',
+                            400: '#D4AF37', // Champagne Gold
+                            500: '#B8860B',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #030303;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* 1. Subtle Noise Texture for Realism */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* 2. Ultra-Luxury Ambient Glows */
+        .ambient-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: #030303;
+        }
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            animation: floatOrb 20s infinite ease-in-out alternate;
+        }
+        .orb-1 {
+            top: -10%; left: -10%; width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0,0,0,0) 60%);
+        }
+        .orb-2 {
+            bottom: -20%; right: -10%; width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(184, 134, 11, 0.1) 0%, rgba(0,0,0,0) 60%);
+            animation-delay: -7s;
+        }
+        .orb-3 {
+            top: 40%; left: 20%; width: 45vw; height: 45vw;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0,0,0,0) 60%);
+            animation-delay: -14s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(5vw, -5vh) scale(1.2); }
+        }
+
+        /* 3. High-End Glassmorphism */
+        .glass-ultra {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(212, 175, 55, 0.15); /* Thin gold border */
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .glass-nav {
+            background: rgba(3, 3, 3, 0.65);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        /* 4. Typography & Gradients */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #FFF 20%, #D4AF37 80%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .text-silver-gradient {
+            background: linear-gradient(135deg, #FFFFFF 0%, #888888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 5. Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Video Card Hover Effects */
+        .video-card {
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .video-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.15);
+        }
+        
+        /* Custom Video controls styling (Hides default play button until hover on some browsers) */
+        video::-webkit-media-controls-panel {
+            background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.8)) !important;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-400 selection:text-black">
+
+    <!-- Texture & Ambient Lighting -->
+    <div class="noise-overlay"></div>
+    <div class="ambient-bg">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 glass-nav transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-4 group cursor-pointer">
+                <!-- LOGO PLACEHOLDER -->
+                <div class="h-10 w-auto flex items-center justify-center text-xs text-gold-400/50 border border-gold-400/30 px-4 rounded-lg bg-black/50 group-hover:border-gold-400/70 transition-colors">
+                    <img src="your_logo_here.png" alt="Glidex Logo" class="h-full hidden" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="tracking-widest uppercase">your_logo_here.png</span>
+                </div>
+                <span class="text-2xl font-light tracking-tight text-white border-l border-white/10 pl-4">GLIDEX</span>
+            </div>
+            <a href="#contact" class="hidden md:inline-flex px-6 py-2.5 rounded-full bg-white/5 hover:bg-gold-400 text-white hover:text-black border border-white/10 hover:border-gold-400 transition-all duration-300 font-medium text-sm tracking-wide">
+                Concierge
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20">
+            <div class="max-w-5xl mx-auto z-10 reveal active">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-400/30 bg-gold-400/5 mb-8">
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
+                    <span class="text-gold-400 text-xs font-semibold tracking-[0.2em] uppercase">Premium Kitchen Hardware</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 text-gold-gradient leading-[1.1]">
+                    The Art of <br/>Silent Motion.
+                </h1>
+                <p class="text-lg md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed mb-12">
+                    Engineered to invisible perfection. Glidex brings architectural luxury to the heart of your home.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <a href="#gallery" class="px-10 py-4 rounded-full bg-white text-black font-semibold text-lg hover:scale-105 hover:bg-gold-400 transition-all duration-500 w-full sm:w-auto shadow-[0_0_40px_rgba(255,255,255,0.3)]">
+                        Explore Collection
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
+                <span class="text-[10px] uppercase tracking-[0.3em] text-white">Scroll</span>
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </div>
+        </section>
+
+        <!-- VIP Video Gallery Section -->
+        <section id="gallery" class="py-32 px-4 md:px-6 relative z-10">
+            <div class="max-w-[90rem] mx-auto">
+                <div class="glass-ultra rounded-[2.5rem] p-6 md:p-12">
+                    
+                    <div class="text-center max-w-3xl mx-auto mb-16 pt-4 reveal">
+                        <h2 class="text-3xl md:text-5xl font-semibold mb-6 text-silver-gradient tracking-tight">Masterpieces in Motion</h2>
+                        <p class="text-gray-400/80 text-lg font-light">Watch our precision hardware glide flawlessly. 20 exclusive demonstrations.</p>
+                    </div>
+
+                    <!-- 20 Vertical Videos Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+                        
+                        <!-- Video Block 1 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 01</span>
+                                <span class="text-[10px] text-gray-500">your_video_1.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_1.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 2 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 50ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 02</span>
+                                <span class="text-[10px] text-gray-500">your_video_2.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_2.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 3 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 100ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 03</span>
+                                <span class="text-[10px] text-gray-500">your_video_3.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_3.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 4 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 150ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 04</span>
+                                <span class="text-[10px] text-gray-500">your_video_4.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_4.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 5 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 200ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 05</span>
+                                <span class="text-[10px] text-gray-500">your_video_5.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_5.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 6 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 06</span>
+                                <span class="text-[10px] text-gray-500">your_video_6.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_6.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 7 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 50ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 07</span>
+                                <span class="text-[10px] text-gray-500">your_video_7.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_7.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 8 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 100ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 08</span>
+                                <span class="text-[10px] text-gray-500">your_video_8.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_8.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 9 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 150ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 09</span>
+                                <span class="text-[10px] text-gray-500">your_video_9.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_9.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 10 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 200ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 10</span>
+                                <span class="text-[10px] text-gray-500">your_video_10.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_10.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 11 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 11</span>
+                                <span class="text-[10px] text-gray-500">your_video_11.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_11.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 12 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 50ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 12</span>
+                                <span class="text-[10px] text-gray-500">your_video_12.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_12.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 13 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 100ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 13</span>
+                                <span class="text-[10px] text-gray-500">your_video_13.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_13.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 14 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 150ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 14</span>
+                                <span class="text-[10px] text-gray-500">your_video_14.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_14.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 15 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 200ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 15</span>
+                                <span class="text-[10px] text-gray-500">your_video_15.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_15.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 16 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 16</span>
+                                <span class="text-[10px] text-gray-500">your_video_16.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_16.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 17 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 50ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 17</span>
+                                <span class="text-[10px] text-gray-500">your_video_17.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_17.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 18 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 100ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 18</span>
+                                <span class="text-[10px] text-gray-500">your_video_18.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_18.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 19 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 150ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 19</span>
+                                <span class="text-[10px] text-gray-500">your_video_19.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_19.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Video Block 20 -->
+                        <div class="video-card relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black/60 border border-white/5 flex items-center justify-center reveal" style="transition-delay: 200ms;">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">Video 20</span>
+                                <span class="text-[10px] text-gray-500">your_video_20.mp4</span>
+                            </div>
+                            <video class="relative z-10 w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" controls playsinline preload="metadata">
+                                <source src="your_video_20.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIP Contact / Footer Section -->
+        <section id="contact" class="py-32 px-4 md:px-6 relative z-10">
+            <div class="max-w-6xl mx-auto glass-ultra rounded-[2.5rem] p-8 md:p-16 border-t border-gold-400/20 reveal">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    
+                    <!-- Elevate Text -->
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gold-gradient tracking-tight">Elevate Your Standard.</h2>
+                        <p class="text-gray-400 text-lg mb-10 font-light leading-relaxed">
+                            Connect with our concierge team to receive detailed catalogs, discuss custom manufacturing requirements, or find an authorized dealer.
+                        </p>
+                        <a href="mailto:glidexindustry@gmail.com" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white/5 hover:bg-gold-400 text-white hover:text-black border border-gold-400/30 hover:border-gold-400 transition-all duration-500 font-medium tracking-wide shadow-[0_0_20px_rgba(212,175,55,0.1)] hover:shadow-[0_0_40px_rgba(212,175,55,0.4)]">
+                            Contact Concierge
+                        </a>
+                    </div>
+
+                    <!-- Contact Details -->
+                    <div class="flex flex-col gap-6">
+                        <!-- Phone -->
+                        <a href="tel:+918866246222" class="flex items-center gap-6 p-5 rounded-2xl border border-white/5 bg-black/40 hover:bg-black/60 hover:border-gold-400/30 transition-all duration-300 group">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-gold-400/20 to-transparent flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform border border-gold-400/20">
+                                <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium uppercase tracking-[0.2em] mb-1">Direct Line</p>
+                                <p class="text-xl font-light text-white tracking-wide">+91 88662 46222</p>
+                            </div>
+                        </a>
+
+                        <!-- Email -->
+                        <a href="mailto:glidexindustry@gmail.com" class="flex items-center gap-6 p-5 rounded-2xl border border-white/5 bg-black/40 hover:bg-black/60 hover:border-gold-400/30 transition-all duration-300 group">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-gold-400/20 to-transparent flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform border border-gold-400/20">
+                                <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium uppercase tracking-[0.2em] mb-1">Electronic Mail</p>
+                                <p class="text-lg font-light text-white break-all tracking-wide">glidexindustry@gmail.com</p>
+                            </div>
+                        </a>
+
+                        <!-- HQ -->
+                        <div class="flex items-start gap-6 p-5 rounded-2xl border border-white/5 bg-black/40 hover:bg-black/60 hover:border-gold-400/30 transition-all duration-300 group">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-gold-400/20 to-transparent flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform border border-gold-400/20">
+                                <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium uppercase tracking-[0.2em] mb-2">Headquarters</p>
+                                <p class="text-sm text-gray-300 font-light leading-loose tracking-wide">
+                                    Survey No. 2/3, Plot no. 16, <br>
+                                    Mayurpark - 2, Raveue, <br>
+                                    Vavdi Ind. Area, Rajkot, <br>
+                                    Gujarat - 360004
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-24 text-center text-xs text-gray-600 tracking-widest uppercase">
+                &copy; <script>document.write(new Date().getFullYear())</script> Glidex Industry. All rights reserved.
+            </div>
+        </section>
+    </main>
+
+    <!-- Simple Scroll Reveal Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
+                
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Trigger on initial load
+        });
+    </script>
+</body>
+</html>
