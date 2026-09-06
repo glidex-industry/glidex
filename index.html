@@ -1,47 +1,87 @@
 ```html
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Glidex Industry | Ultra-Luxury Kitchen Hardware</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Glidex Industry | Ultra-Luxury Kitchen Hardware
+    </title>
+
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Premium Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Premium Fonts -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
         rel="stylesheet"
     >
 
+
+    <!-- Tailwind Configuration -->
+
     <script>
+
         tailwind.config = {
+
             theme: {
+
                 extend: {
+
                     fontFamily: {
                         sans: ['Inter', 'sans-serif']
                     },
+
                     colors: {
+
                         obsidian: '#030303',
+
                         gold: {
+
                             300: '#FDE68A',
+
                             400: '#D4AF37',
+
                             500: '#B8860B'
+
                         }
+
                     }
+
                 }
+
             }
-        }
+
+        };
+
     </script>
 
+
     <style>
-        /* =========================
+
+        /* =========================================================
            GLOBAL
-        ========================== */
+        ========================================================= */
 
         * {
             box-sizing: border-box;
@@ -52,455 +92,827 @@
         }
 
         body {
+
             margin: 0;
-            background: #030303;
-            color: #fff;
+
+            background-color: #030303;
+
+            color: #ffffff;
+
             overflow-x: hidden;
+
             font-family: 'Inter', sans-serif;
+
         }
 
-        /* =========================
-           NOISE
-        ========================== */
+
+        /* =========================================================
+           NOISE TEXTURE
+        ========================================================= */
 
         .noise-overlay {
+
             position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
+
+            top: 0;
+            left: 0;
+
+            width: 100vw;
+            height: 100vh;
+
             pointer-events: none;
+
             z-index: 50;
-            opacity: 0.025;
+
+            opacity: 0.03;
+
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+
         }
 
-        /* =========================
+
+        /* =========================================================
            AMBIENT BACKGROUND
-        ========================== */
+        ========================================================= */
 
         .ambient-bg {
+
             position: fixed;
-            inset: 0;
+
+            top: 0;
+            left: 0;
+
+            width: 100vw;
+            height: 100vh;
+
             z-index: -1;
+
             overflow: hidden;
+
             background: #030303;
+
         }
+
 
         .glow-orb {
+
             position: absolute;
+
             border-radius: 50%;
+
             filter: blur(120px);
-            animation: floatOrb 20s infinite ease-in-out alternate;
+
+            animation:
+                floatOrb
+                20s
+                infinite
+                ease-in-out
+                alternate;
+
         }
+
 
         .orb-1 {
+
             top: -10%;
             left: -10%;
+
             width: 50vw;
             height: 50vw;
-            background: radial-gradient(
-                circle,
-                rgba(212, 175, 55, 0.15) 0%,
-                rgba(0, 0, 0, 0) 60%
-            );
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(212, 175, 55, 0.15) 0%,
+                    rgba(0, 0, 0, 0) 60%
+                );
+
         }
+
 
         .orb-2 {
-            right: -10%;
+
             bottom: -20%;
+            right: -10%;
+
             width: 60vw;
             height: 60vw;
-            background: radial-gradient(
-                circle,
-                rgba(184, 134, 11, 0.10) 0%,
-                rgba(0, 0, 0, 0) 60%
-            );
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(184, 134, 11, 0.1) 0%,
+                    rgba(0, 0, 0, 0) 60%
+                );
+
             animation-delay: -7s;
+
         }
+
 
         .orb-3 {
+
             top: 40%;
             left: 20%;
+
             width: 45vw;
             height: 45vw;
-            background: radial-gradient(
-                circle,
-                rgba(255, 255, 255, 0.04) 0%,
-                rgba(0, 0, 0, 0) 60%
-            );
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255, 255, 255, 0.05) 0%,
+                    rgba(0, 0, 0, 0) 60%
+                );
+
             animation-delay: -14s;
+
         }
 
+
         @keyframes floatOrb {
+
             0% {
-                transform: translate(0, 0) scale(1);
+
+                transform:
+                    translate(0, 0)
+                    scale(1);
+
             }
 
             100% {
-                transform: translate(5vw, -5vh) scale(1.2);
+
+                transform:
+                    translate(5vw, -5vh)
+                    scale(1.2);
+
             }
+
         }
 
-        /* =========================
-           GLASS EFFECT
-        ========================== */
+
+        /* =========================================================
+           GLASSMORPHISM
+        ========================================================= */
 
         .glass-ultra {
+
             background:
                 linear-gradient(
                     135deg,
-                    rgba(255,255,255,0.035) 0%,
+                    rgba(255,255,255,0.03) 0%,
                     rgba(255,255,255,0.01) 100%
                 );
 
             backdrop-filter: blur(40px);
+
             -webkit-backdrop-filter: blur(40px);
 
-            border: 1px solid rgba(212,175,55,0.15);
+            border:
+                1px solid
+                rgba(212, 175, 55, 0.15);
 
             box-shadow:
-                0 30px 60px -15px rgba(0,0,0,0.8),
-                inset 0 1px 0 rgba(255,255,255,0.08);
+
+                0 30px 60px -15px
+                rgba(0, 0, 0, 0.8),
+
+                inset 0 1px 0
+                rgba(255,255,255,0.1);
+
         }
+
 
         .glass-nav {
-            background: rgba(3,3,3,0.72);
+
+            background:
+                rgba(3, 3, 3, 0.65);
+
             backdrop-filter: blur(24px);
+
             -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(212,175,55,0.1);
+
+            border-bottom:
+                1px solid
+                rgba(212, 175, 55, 0.1);
+
         }
 
-        /* =========================
-           GRADIENT TEXT
-        ========================== */
+
+        /* =========================================================
+           TYPOGRAPHY
+        ========================================================= */
 
         .text-gold-gradient {
-            background: linear-gradient(
-                135deg,
-                #fff 20%,
-                #D4AF37 80%,
-                #B8860B 100%
-            );
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #FFF 20%,
+                    #D4AF37 80%,
+                    #B8860B 100%
+                );
 
             -webkit-background-clip: text;
+
             background-clip: text;
+
             -webkit-text-fill-color: transparent;
+
         }
+
 
         .text-silver-gradient {
-            background: linear-gradient(
-                135deg,
-                #fff 0%,
-                #888 100%
-            );
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #FFFFFF 0%,
+                    #888888 100%
+                );
 
             -webkit-background-clip: text;
+
             background-clip: text;
+
             -webkit-text-fill-color: transparent;
+
         }
 
-        /* =========================
+
+        /* =========================================================
            SCROLL REVEAL
-        ========================== */
+        ========================================================= */
 
         .reveal {
+
             opacity: 0;
-            transform: translateY(25px);
+
+            transform:
+                translateY(30px);
+
             transition:
-                opacity 0.8s ease,
-                transform 0.8s ease;
+                opacity 0.9s ease,
+                transform 0.9s ease;
+
         }
+
 
         .reveal.active {
+
             opacity: 1;
-            transform: translateY(0);
+
+            transform:
+                translateY(0);
+
         }
 
-        /* =========================
+
+        /* =========================================================
            VIDEO CARDS
-        ========================== */
+        ========================================================= */
 
         .video-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 18px;
-            background: #050505;
-            border: 1px solid rgba(255,255,255,0.06);
 
             transition:
-                transform 0.4s ease,
-                border-color 0.4s ease,
-                box-shadow 0.4s ease;
+
+                transform
+                0.5s
+                cubic-bezier(
+                    0.2,
+                    0.8,
+                    0.2,
+                    1
+                ),
+
+                border-color
+                0.5s
+                ease,
+
+                box-shadow
+                0.5s
+                ease;
+
         }
+
 
         .video-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(212,175,55,0.35);
+
+            transform:
+                translateY(-5px)
+                scale(1.02);
+
+            border-color:
+                rgba(212, 175, 55, 0.4);
+
             box-shadow:
-                0 20px 40px -15px rgba(212,175,55,0.15);
+                0 20px 40px -10px
+                rgba(212, 175, 55, 0.15);
+
         }
+
 
         .video-card video {
+
             display: block;
+
             width: 100%;
+
             height: 100%;
+
             object-fit: cover;
+
             background: #000;
+
         }
 
-        /* Video playing indicator */
 
-        .video-card.playing::after {
-            content: "";
-            position: absolute;
-            top: 10px;
-            right: 10px;
+        /* Playing indicator */
 
-            width: 7px;
-            height: 7px;
+        .video-card.is-playing {
 
-            border-radius: 50%;
-            background: #D4AF37;
+            border-color:
+                rgba(212, 175, 55, 0.35);
 
-            box-shadow: 0 0 12px rgba(212,175,55,0.8);
-
-            pointer-events: none;
-            z-index: 5;
         }
 
-        /* =========================
-           MOBILE
-        ========================== */
+
+        /* =========================================================
+           MOBILE OPTIMIZATION
+        ========================================================= */
 
         @media (max-width: 767px) {
 
-            body {
-                font-size: 15px;
+
+            /* -------------------------
+               NAVIGATION
+            ------------------------- */
+
+            .mobile-nav {
+
+                padding:
+                    10px
+                    14px;
+
             }
 
-            .ambient-bg .glow-orb {
-                filter: blur(90px);
+
+            .mobile-logo {
+
+                height: 34px;
+
+                max-width: 125px;
+
             }
 
-            .orb-1 {
-                width: 90vw;
-                height: 90vw;
-            }
 
-            .orb-2 {
-                width: 100vw;
-                height: 100vw;
-            }
+            .mobile-tagline {
 
-            .orb-3 {
-                width: 80vw;
-                height: 80vw;
-            }
-
-            /* Navbar */
-
-            nav .nav-inner {
-                padding: 10px 14px;
-            }
-
-            nav img {
-                max-width: 120px;
-            }
-
-            nav .tagline {
                 display: none;
+
             }
 
-            /* Hero */
 
-            .hero-section {
-                min-height: 100svh;
+            /* -------------------------
+               HERO
+            ------------------------- */
+
+            .mobile-hero {
+
+                min-height:
+                    100svh;
+
                 padding:
                     100px
                     18px
-                    60px;
+                    65px;
+
             }
 
-            .hero-title {
-                font-size: clamp(42px, 12vw, 62px);
-                line-height: 1.02;
-                margin-bottom: 20px;
+
+            .mobile-hero-title {
+
+                font-size:
+                    clamp(
+                        42px,
+                        12vw,
+                        64px
+                    );
+
+                line-height:
+                    1.04;
+
+                margin-bottom:
+                    22px;
+
             }
 
-            .hero-description {
-                font-size: 16px;
-                line-height: 1.6;
-                margin-bottom: 28px;
+
+            .mobile-hero-description {
+
+                font-size:
+                    16px;
+
+                line-height:
+                    1.6;
+
+                margin-bottom:
+                    30px;
+
             }
 
-            .hero-badge {
-                margin-bottom: 22px;
-                padding: 7px 12px;
+
+            .mobile-hero-badge {
+
+                margin-bottom:
+                    22px;
+
             }
 
-            .hero-button {
+
+            .mobile-explore {
+
                 width: 100%;
-                padding: 14px 20px;
-                font-size: 16px;
+
             }
 
-            /* Gallery */
 
-            .gallery-section {
+            /* -------------------------
+               GALLERY
+            ------------------------- */
+
+            .mobile-gallery-section {
+
                 padding:
-                    45px
+                    50px
                     12px
-                    50px;
+                    55px;
+
             }
 
-            .gallery-container {
-                padding: 18px 12px 20px;
-                border-radius: 22px;
-            }
 
-            .gallery-heading {
-                margin-bottom: 28px;
-                padding: 0 4px;
-            }
+            .mobile-gallery-container {
 
-            .gallery-heading h2 {
-                font-size: 30px;
-                line-height: 1.1;
-                margin-bottom: 12px;
-            }
-
-            .gallery-heading p {
-                font-size: 14px;
-                line-height: 1.6;
-            }
-
-            /* 2 columns on mobile */
-
-            .video-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 10px;
-            }
-
-            .video-card {
-                border-radius: 13px;
-            }
-
-            /* Contact */
-
-            .contact-section {
                 padding:
-                    40px
+                    22px
                     12px
-                    40px;
+                    22px;
+
+                border-radius:
+                    22px;
+
             }
 
-            .contact-container {
-                padding: 25px 18px;
-                border-radius: 22px;
+
+            .mobile-gallery-heading {
+
+                margin-bottom:
+                    28px;
+
+                padding:
+                    0 5px;
+
             }
 
-            .contact-grid {
-                gap: 30px;
+
+            .mobile-gallery-heading h2 {
+
+                font-size:
+                    30px;
+
+                line-height:
+                    1.15;
+
+                margin-bottom:
+                    12px;
+
             }
 
-            .contact-title {
-                font-size: 32px;
-                line-height: 1.1;
+
+            .mobile-gallery-heading p {
+
+                font-size:
+                    14px;
+
+                line-height:
+                    1.6;
+
             }
 
-            .contact-description {
-                font-size: 15px;
-                line-height: 1.6;
-                margin-bottom: 25px;
+
+            /* -------------------------
+               VIDEO GRID
+            ------------------------- */
+
+            .mobile-video-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0, 1fr)
+                    );
+
+                gap:
+                    10px;
+
             }
 
-            .contact-item {
-                padding: 14px;
-                gap: 13px;
-                border-radius: 15px;
+
+            .mobile-video-card {
+
+                border-radius:
+                    13px;
+
             }
 
-            .contact-icon {
-                width: 43px;
-                height: 43px;
+
+            /* -------------------------
+               CONTACT
+            ------------------------- */
+
+            .mobile-contact-section {
+
+                padding:
+                    50px
+                    12px
+                    45px;
+
             }
 
-            .contact-value {
-                font-size: 15px;
+
+            .mobile-contact-container {
+
+                padding:
+                    28px
+                    18px;
+
+                border-radius:
+                    22px;
+
             }
 
-            .contact-label {
-                font-size: 9px;
-                letter-spacing: 0.15em;
+
+            .mobile-contact-grid {
+
+                gap:
+                    32px;
+
             }
 
-            .copyright {
-                margin-top: 35px;
+
+            .mobile-contact-title {
+
+                font-size:
+                    32px;
+
+                line-height:
+                    1.1;
+
             }
+
+
+            .mobile-contact-description {
+
+                font-size:
+                    15px;
+
+                line-height:
+                    1.65;
+
+                margin-bottom:
+                    26px;
+
+            }
+
+
+            .mobile-contact-item {
+
+                padding:
+                    14px;
+
+                gap:
+                    14px;
+
+                border-radius:
+                    15px;
+
+            }
+
+
+            .mobile-contact-icon {
+
+                width:
+                    44px;
+
+                height:
+                    44px;
+
+            }
+
+
+            .mobile-contact-value {
+
+                font-size:
+                    15px;
+
+            }
+
+
+            .mobile-contact-label {
+
+                font-size:
+                    9px;
+
+                letter-spacing:
+                    0.14em;
+
+            }
+
+
+            .mobile-copyright {
+
+                margin-top:
+                    38px;
+
+                line-height:
+                    1.7;
+
+            }
+
         }
 
-        /* =========================
+
+        /* =========================================================
            REDUCED MOTION
-        ========================== */
+        ========================================================= */
 
         @media (prefers-reduced-motion: reduce) {
 
             *,
             *::before,
             *::after {
-                scroll-behavior: auto !important;
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+
+                animation-duration:
+                    0.01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    0.01ms !important;
+
             }
+
         }
+
     </style>
+
 </head>
 
-<body class="antialiased selection:bg-gold-400 selection:text-black">
 
-    <!-- =====================================
-         BACKGROUND
-    ====================================== -->
+<body
+    class="
+        antialiased
+        selection:bg-gold-400
+        selection:text-black
+    "
+>
+
+
+    <!-- =========================================================
+         TEXTURE & AMBIENT LIGHTING
+    ========================================================== -->
 
     <div class="noise-overlay"></div>
 
+
     <div class="ambient-bg">
+
         <div class="glow-orb orb-1"></div>
+
         <div class="glow-orb orb-2"></div>
+
         <div class="glow-orb orb-3"></div>
+
     </div>
 
 
-    <!-- =====================================
+
+    <!-- =========================================================
          NAVIGATION
-    ====================================== -->
+    ========================================================== -->
 
-    <nav class="fixed top-0 left-0 w-full z-40 glass-nav">
+    <nav
+        class="
+            fixed
+            top-0
+            left-0
+            w-full
+            z-40
+            glass-nav
+        "
+    >
 
-        <div class="nav-inner max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div
+            class="
+                mobile-nav
+                max-w-7xl
+                mx-auto
+                px-6
+                py-4
+                flex
+                justify-between
+                items-center
+            "
+        >
 
-            <div class="flex items-center gap-4">
 
-                <div class="h-10 flex items-center justify-center px-3 rounded-lg bg-black/50 border border-gold-400/20">
+            <!-- LOGO -->
+
+            <div
+                class="
+                    flex
+                    items-center
+                    gap-4
+                    group
+                    cursor-pointer
+                "
+            >
+
+                <div
+                    class="
+                        h-10
+                        w-auto
+                        flex
+                        items-center
+                        justify-center
+                        text-xs
+                        text-gold-400/50
+                        border
+                        border-gold-400/30
+                        px-4
+                        rounded-lg
+                        bg-black/50
+                        group-hover:border-gold-400/70
+                        transition-colors
+                    "
+                >
 
                     <img
                         src="assets/images/logo.png"
-                        alt="Glidex Industry"
-                        class="h-8 w-auto object-contain"
+                        alt="Glidex Logo"
+                        class="
+                            mobile-logo
+                            h-full
+                            w-auto
+                            object-contain
+                        "
                     >
 
                 </div>
 
-                <span class="tagline text-sm md:text-xl font-light tracking-tight text-white border-l border-white/10 pl-4">
+
+                <span
+                    class="
+                        mobile-tagline
+                        text-2xl
+                        font-light
+                        tracking-tight
+                        text-white
+                        border-l
+                        border-white/10
+                        pl-4
+                    "
+                >
                     ENGINEERED TO LAST
                 </span>
 
             </div>
 
+
+            <!-- CONCIERGE -->
+
             <a
                 href="#contact"
-                class="hidden sm:inline-flex px-5 py-2.5 rounded-full bg-white/5 hover:bg-gold-400 text-white hover:text-black border border-white/10 hover:border-gold-400 transition-all duration-300 font-medium text-sm"
+                class="
+                    hidden
+                    md:inline-flex
+                    px-6
+                    py-2.5
+                    rounded-full
+                    bg-white/5
+                    hover:bg-gold-400
+                    text-white
+                    hover:text-black
+                    border
+                    border-white/10
+                    hover:border-gold-400
+                    transition-all
+                    duration-300
+                    font-medium
+                    text-sm
+                    tracking-wide
+                "
             >
                 Concierge
             </a>
@@ -510,55 +922,165 @@
     </nav>
 
 
+
     <main>
 
 
-        <!-- =====================================
-             HERO
-        ====================================== -->
+        <!-- =====================================================
+             HERO SECTION
+        ====================================================== -->
 
         <section
-            class="hero-section relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20"
+            class="
+                mobile-hero
+                relative
+                min-h-screen
+                flex
+                flex-col
+                items-center
+                justify-center
+                text-center
+                px-6
+                pt-20
+            "
         >
 
-            <div class="max-w-5xl mx-auto z-10 reveal active">
+            <div
+                class="
+                    max-w-5xl
+                    mx-auto
+                    z-10
+                    reveal
+                    active
+                "
+            >
+
+
+                <!-- BADGE -->
 
                 <div
-                    class="hero-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-400/30 bg-gold-400/5 mb-8"
+                    class="
+                        mobile-hero-badge
+                        inline-flex
+                        items-center
+                        gap-2
+                        px-4
+                        py-1.5
+                        rounded-full
+                        border
+                        border-gold-400/30
+                        bg-gold-400/5
+                        mb-8
+                    "
                 >
 
-                    <span class="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse"></span>
+                    <span
+                        class="
+                            w-1.5
+                            h-1.5
+                            rounded-full
+                            bg-gold-400
+                            animate-pulse
+                        "
+                    ></span>
 
-                    <span class="text-gold-400 text-xs font-semibold tracking-[0.2em] uppercase">
+
+                    <span
+                        class="
+                            text-gold-400
+                            text-xs
+                            font-semibold
+                            tracking-[0.2em]
+                            uppercase
+                        "
+                    >
                         Premium Kitchen Hardware
                     </span>
 
                 </div>
 
 
+
+                <!-- MAIN HEADING -->
+
                 <h1
-                    class="hero-title text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 text-gold-gradient leading-[1.1]"
+                    class="
+                        mobile-hero-title
+                        text-5xl
+                        md:text-7xl
+                        lg:text-8xl
+                        font-bold
+                        tracking-tighter
+                        mb-8
+                        text-gold-gradient
+                        leading-[1.1]
+                    "
                 >
+
                     The Art of
                     <br>
                     Silent Motion.
+
                 </h1>
 
 
+
+                <!-- DESCRIPTION -->
+
                 <p
-                    class="hero-description text-lg md:text-2xl text-gray-400 font-light max-w-2xl mx-auto leading-relaxed mb-12"
+                    class="
+                        mobile-hero-description
+                        text-lg
+                        md:text-2xl
+                        text-gray-400
+                        font-light
+                        max-w-2xl
+                        mx-auto
+                        leading-relaxed
+                        mb-12
+                    "
                 >
+
                     Engineered to invisible perfection.
                     Glidex brings architectural luxury
                     to the heart of your home.
+
                 </p>
 
 
-                <div class="flex items-center justify-center">
+
+                <!-- BUTTON -->
+
+                <div
+                    class="
+                        flex
+                        flex-col
+                        sm:flex-row
+                        items-center
+                        justify-center
+                        gap-6
+                    "
+                >
 
                     <a
                         href="#gallery"
-                        class="hero-button px-10 py-4 rounded-full bg-white text-black font-semibold text-lg hover:scale-105 hover:bg-gold-400 transition-all duration-500 shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+                        class="
+                            mobile-explore
+                            px-10
+                            py-4
+                            rounded-full
+                            bg-white
+                            text-black
+                            font-semibold
+                            text-lg
+                            hover:scale-105
+                            hover:bg-gold-400
+                            transition-all
+                            duration-500
+                            w-full
+                            sm:w-auto
+                            shadow-[0_0_40px_rgba(255,255,255,0.3)]
+                        "
                     >
                         Explore Collection
                     </a>
@@ -568,26 +1090,61 @@
             </div>
 
 
-            <!-- Scroll Indicator -->
 
-            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
+            <!-- SCROLL INDICATOR -->
 
-                <span class="text-[9px] uppercase tracking-[0.3em] text-white">
+            <div
+                class="
+                    absolute
+                    bottom-10
+                    left-1/2
+                    -translate-x-1/2
+                    flex
+                    flex-col
+                    items-center
+                    gap-2
+                    opacity-50
+                    animate-bounce
+                "
+            >
+
+                <span
+                    class="
+                        text-[10px]
+                        uppercase
+                        tracking-[0.3em]
+                        text-white
+                    "
+                >
                     Scroll
                 </span>
 
+
                 <svg
-                    class="w-4 h-4 text-white"
+                    class="
+                        w-4
+                        h-4
+                        text-white
+                    "
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                 >
+
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                        d="
+                            M19 14
+                            l-7 7
+                            m0 0
+                            l-7-7
+                            m7 7
+                            V3
+                        "
                     />
+
                 </svg>
 
             </div>
@@ -596,34 +1153,75 @@
 
 
 
-        <!-- =====================================
-             VIDEO GALLERY
-        ====================================== -->
+        <!-- =====================================================
+             VIP VIDEO GALLERY
+        ====================================================== -->
 
         <section
             id="gallery"
-            class="gallery-section py-24 md:py-32 px-4 md:px-6 relative z-10"
+            class="
+                mobile-gallery-section
+                py-32
+                px-4
+                md:px-6
+                relative
+                z-10
+            "
         >
 
-            <div class="max-w-[90rem] mx-auto">
+            <div
+                class="
+                    max-w-[90rem]
+                    mx-auto
+                "
+            >
 
                 <div
-                    class="gallery-container glass-ultra rounded-[2.5rem] p-6 md:p-12"
+                    class="
+                        mobile-gallery-container
+                        glass-ultra
+                        rounded-[2.5rem]
+                        p-6
+                        md:p-12
+                    "
                 >
 
-                    <!-- Heading -->
+
+                    <!-- GALLERY HEADING -->
 
                     <div
-                        class="gallery-heading text-center max-w-3xl mx-auto mb-14 reveal"
+                        class="
+                            mobile-gallery-heading
+                            text-center
+                            max-w-3xl
+                            mx-auto
+                            mb-16
+                            pt-4
+                            reveal
+                        "
                     >
 
                         <h2
-                            class="text-3xl md:text-5xl font-semibold mb-5 text-silver-gradient tracking-tight"
+                            class="
+                                text-3xl
+                                md:text-5xl
+                                font-semibold
+                                mb-6
+                                text-silver-gradient
+                                tracking-tight
+                            "
                         >
                             Masterpieces in Motion
                         </h2>
 
-                        <p class="text-gray-400/80 text-base md:text-lg font-light">
+
+                        <p
+                            class="
+                                text-gray-400/80
+                                text-lg
+                                font-light
+                            "
+                        >
                             Watch our precision hardware glide flawlessly.
                             Exclusive demonstrations.
                         </p>
@@ -631,14 +1229,792 @@
                     </div>
 
 
-                    <!-- VIDEO GRID -->
+
+                    <!-- =================================================
+                         VIDEO GRID
+                         12 VIDEOS
+                    ================================================== -->
 
                     <div
                         id="videoGrid"
-                        class="video-grid grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
+                        class="
+                            mobile-video-grid
+                            grid
+                            grid-cols-2
+                            md:grid-cols-4
+                            lg:grid-cols-5
+                            gap-4
+                            md:gap-6
+                        "
                     >
 
-                        <!-- Videos are generated automatically by JavaScript -->
+
+                        <!-- VIDEO 01 -->
+
+                        <div
+                            class="
+                                mobile-video-card
+                                video-card
+                                relative
+                                w-full
+                                aspect-[9/16]
+                                rounded-2xl
+                                overflow-hidden
+                                bg-black/60
+                                border
+                                border-white/5
+                                flex
+                                items-center
+                                justify-center
+                                reveal
+                            "
+                        >
+
+                            <div
+                                class="
+                                    absolute
+                                    inset-0
+                                    flex
+                                    flex-col
+                                    items-center
+                                    justify-center
+                                    text-gold-400/40
+                                    p-4
+                                    text-center
+                                    pointer-events-none
+                                    z-0
+                                "
+                            >
+
+                                <span
+                                    class="
+                                        font-mono
+                                        text-xs
+                                        tracking-widest
+                                        uppercase
+                                        mb-2
+                                    "
+                                >
+                                    Video 01
+                                </span>
+
+                                <span
+                                    class="
+                                        text-[10px]
+                                        text-gray-500
+                                    "
+                                >
+                                    1.mp4
+                                </span>
+
+                            </div>
+
+
+                            <video
+                                class="
+                                    relative
+                                    z-10
+                                    w-full
+                                    h-full
+                                    object-cover
+                                    opacity-90
+                                "
+                                controls
+                                muted
+                                autoplay
+                                loop
+                                playsinline
+                                webkit-playsinline
+                                preload="auto"
+                            >
+
+                                <source
+                                    src="assets/videos/1.mp4"
+                                    type="video/mp4"
+                                >
+
+                            </video>
+
+                        </div>
+
+
+
+                        <!-- VIDEO 02 -->
+
+                        <div
+                            class="
+                                mobile-video-card
+                                video-card
+                                relative
+                                w-full
+                                aspect-[9/16]
+                                rounded-2xl
+                                overflow-hidden
+                                bg-black/60
+                                border
+                                border-white/5
+                                flex
+                                items-center
+                                justify-center
+                                reveal
+                            "
+                            style="transition-delay: 50ms;"
+                        >
+
+                            <div
+                                class="
+                                    absolute
+                                    inset-0
+                                    flex
+                                    flex-col
+                                    items-center
+                                    justify-center
+                                    text-gold-400/40
+                                    p-4
+                                    text-center
+                                    pointer-events-none
+                                    z-0
+                                "
+                            >
+
+                                <span
+                                    class="
+                                        font-mono
+                                        text-xs
+                                        tracking-widest
+                                        uppercase
+                                        mb-2
+                                    "
+                                >
+                                    Video 02
+                                </span>
+
+                                <span
+                                    class="
+                                        text-[10px]
+                                        text-gray-500
+                                    "
+                                >
+                                    2.mp4
+                                </span>
+
+                            </div>
+
+
+                            <video
+                                class="
+                                    relative
+                                    z-10
+                                    w-full
+                                    h-full
+                                    object-cover
+                                    opacity-90
+                                "
+                                controls
+                                muted
+                                autoplay
+                                loop
+                                playsinline
+                                webkit-playsinline
+                                preload="auto"
+                            >
+
+                                <source
+                                    src="assets/videos/2.mp4"
+                                    type="video/mp4"
+                                >
+
+                            </video>
+
+                        </div>
+
+
+
+                        <!-- VIDEO 03 -->
+
+                        <div
+                            class="
+                                mobile-video-card
+                                video-card
+                                relative
+                                w-full
+                                aspect-[9/16]
+                                rounded-2xl
+                                overflow-hidden
+                                bg-black/60
+                                border
+                                border-white/5
+                                flex
+                                items-center
+                                justify-center
+                                reveal
+                            "
+                            style="transition-delay: 100ms;"
+                        >
+
+                            <div
+                                class="
+                                    absolute
+                                    inset-0
+                                    flex
+                                    flex-col
+                                    items-center
+                                    justify-center
+                                    text-gold-400/40
+                                    p-4
+                                    text-center
+                                    pointer-events-none
+                                    z-0
+                                "
+                            >
+
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">
+                                    Video 03
+                                </span>
+
+                                <span class="text-[10px] text-gray-500">
+                                    3.mp4
+                                </span>
+
+                            </div>
+
+
+                            <video
+                                class="relative z-10 w-full h-full object-cover opacity-90"
+                                controls
+                                muted
+                                autoplay
+                                loop
+                                playsinline
+                                webkit-playsinline
+                                preload="auto"
+                            >
+
+                                <source
+                                    src="assets/videos/3.mp4"
+                                    type="video/mp4"
+                                >
+
+                            </video>
+
+                        </div>
+
+
+
+                        <!-- VIDEO 04 -->
+
+                        <div
+                            class="
+                                mobile-video-card
+                                video-card
+                                relative
+                                w-full
+                                aspect-[9/16]
+                                rounded-2xl
+                                overflow-hidden
+                                bg-black/60
+                                border
+                                border-white/5
+                                flex
+                                items-center
+                                justify-center
+                                reveal
+                            "
+                            style="transition-delay: 150ms;"
+                        >
+
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">
+                                    Video 04
+                                </span>
+
+                                <span class="text-[10px] text-gray-500">
+                                    4.mp4
+                                </span>
+
+                            </div>
+
+
+                            <video
+                                class="relative z-10 w-full h-full object-cover opacity-90"
+                                controls
+                                muted
+                                autoplay
+                                loop
+                                playsinline
+                                webkit-playsinline
+                                preload="auto"
+                            >
+
+                                <source
+                                    src="assets/videos/4.mp4"
+                                    type="video/mp4"
+                                >
+
+                            </video>
+
+                        </div>
+
+
+
+                        <!-- VIDEO 05 -->
+
+                        <div
+                            class="
+                                mobile-video-card
+                                video-card
+                                relative
+                                w-full
+                                aspect-[9/16]
+                                rounded-2xl
+                                overflow-hidden
+                                bg-black/60
+                                border
+                                border-white/5
+                                flex
+                                items-center
+                                justify-center
+                                reveal
+                            "
+                            style="transition-delay: 200ms;"
+                        >
+
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">
+                                    Video 05
+                                </span>
+
+                                <span class="text-[10px] text-gray-500">
+                                    5.mp4
+                                </span>
+
+                            </div>
+
+
+                            <video
+                                class="relative z-10 w-full h-full object-cover opacity-90"
+                                controls
+                                muted
+                                autoplay
+                                loop
+                                playsinline
+                                webkit-playsinline
+                                preload="auto"
+                            >
+
+                                <source
+                                    src="assets/videos/5.mp4"
+                                    type="video/mp4"
+                                >
+
+                            </video>
+
+                        </div>
+
+
+
+                        <!-- VIDEO 06 -->
+
+                        <div
+                            class="
+                                mobile-video-card
+                                video-card
+                                relative
+                                w-full
+                                aspect-[9/16]
+                                rounded-2xl
+                                overflow-hidden
+                                bg-black/60
+                                border
+                                border-white/5
+                                flex
+                                items-center
+                                justify-center
+                                reveal
+                            "
+                        >
+
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">
+                                    Video 06
+                                </span>
+
+                                <span class="text-[10px] text-gray-500">
+                                    6.mp4
+                                </span>
+
+                            </div>
+
+
+                            <video
+                                class="relative z-10 w-full h-full object-cover opacity-90"
+                                controls
+                                muted
+                                autoplay
+                                loop
+                                playsinline
+                                webkit-playsinline
+                                preload="auto"
+                            >
+
+                                <source
+                                    src="assets/videos/6.mp4"
+                                    type="video/mp4"
+                                >
+
+                            </video>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             VIDEO 07
+                             FIXED
+                        ================================================== -->
+
+                        <div
+                            class="
+                                mobile-video-card
+                                video-card
+                                relative
+                                w-full
+                                aspect-[9/16]
+                                rounded-2xl
+                                overflow-hidden
+                                bg-black/60
+                                border
+                                border-white/5
+                                flex
+                                items-center
+                                justify-center
+                                reveal
+                            "
+                            style="transition-delay: 50ms;"
+                        >
+
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">
+                                    Video 07
+                                </span>
+
+                                <span class="text-[10px] text-gray-500">
+                                    7.mp4
+                                </span>
+
+                            </div>
+
+
+                            <!-- IMPORTANT:
+                                 Correct source path -->
+
+                            <video
+                                class="relative z-10 w-full h-full object-cover opacity-90"
+                                controls
+                                muted
+                                autoplay
+                                loop
+                                playsinline
+                                webkit-playsinline
+                                preload="auto"
+                            >
+
+                                <source
+                                    src="assets/videos/7.mp4"
+                                    type="video/mp4"
+                                >
+
+                            </video>
+
+                        </div>
+
+
+
+                        <!-- VIDEO 08 -->
+
+                        <div
+                            class="
+                                mobile-video-card
+                                video-card
+                                relative
+                                w-full
+                                aspect-[9/16]
+                                rounded-2xl
+                                overflow-hidden
+                                bg-black/60
+                                border
+                                border-white/5
+                                flex
+                                items-center
+                                justify-center
+                                reveal
+                            "
+                            style="transition-delay: 100ms;"
+                        >
+
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">
+                                    Video 08
+                                </span>
+
+                                <span class="text-[10px] text-gray-500">
+                                    8.mp4
+                                </span>
+
+                            </div>
+
+
+                            <video
+                                class="relative z-10 w-full h-full object-cover opacity-90"
+                                controls
+                                muted
+                                autoplay
+                                loop
+                                playsinline
+                                webkit-playsinline
+                                preload="auto"
+                            >
+
+                                <source
+                                    src="assets/videos/8.mp4"
+                                    type="video/mp4"
+                                >
+
+                            </video>
+
+                        </div>
+
+
+
+                        <!-- VIDEO 09 -->
+
+                        <div
+                            class="
+                                mobile-video-card
+                                video-card
+                                relative
+                                w-full
+                                aspect-[9/16]
+                                rounded-2xl
+                                overflow-hidden
+                                bg-black/60
+                                border
+                                border-white/5
+                                flex
+                                items-center
+                                justify-center
+                                reveal
+                            "
+                            style="transition-delay: 150ms;"
+                        >
+
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">
+                                    Video 09
+                                </span>
+
+                                <span class="text-[10px] text-gray-500">
+                                    9.mp4
+                                </span>
+
+                            </div>
+
+
+                            <video
+                                class="relative z-10 w-full h-full object-cover opacity-90"
+                                controls
+                                muted
+                                autoplay
+                                loop
+                                playsinline
+                                webkit-playsinline
+                                preload="auto"
+                            >
+
+                                <source
+                                    src="assets/videos/9.mp4"
+                                    type="video/mp4"
+                                >
+
+                            </video>
+
+                        </div>
+
+
+
+                        <!-- VIDEO 10 -->
+
+                        <div
+                            class="
+                                mobile-video-card
+                                video-card
+                                relative
+                                w-full
+                                aspect-[9/16]
+                                rounded-2xl
+                                overflow-hidden
+                                bg-black/60
+                                border
+                                border-white/5
+                                flex
+                                items-center
+                                justify-center
+                                reveal
+                            "
+                            style="transition-delay: 200ms;"
+                        >
+
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">
+                                    Video 10
+                                </span>
+
+                                <span class="text-[10px] text-gray-500">
+                                    10.mp4
+                                </span>
+
+                            </div>
+
+
+                            <video
+                                class="relative z-10 w-full h-full object-cover opacity-90"
+                                controls
+                                muted
+                                autoplay
+                                loop
+                                playsinline
+                                webkit-playsinline
+                                preload="auto"
+                            >
+
+                                <source
+                                    src="assets/videos/10.mp4"
+                                    type="video/mp4"
+                                >
+
+                            </video>
+
+                        </div>
+
+
+
+                        <!-- VIDEO 11 -->
+
+                        <div
+                            class="
+                                mobile-video-card
+                                video-card
+                                relative
+                                w-full
+                                aspect-[9/16]
+                                rounded-2xl
+                                overflow-hidden
+                                bg-black/60
+                                border
+                                border-white/5
+                                flex
+                                items-center
+                                justify-center
+                                reveal
+                            "
+                        >
+
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">
+                                    Video 11
+                                </span>
+
+                                <span class="text-[10px] text-gray-500">
+                                    11.mp4
+                                </span>
+
+                            </div>
+
+
+                            <video
+                                class="relative z-10 w-full h-full object-cover opacity-90"
+                                controls
+                                muted
+                                autoplay
+                                loop
+                                playsinline
+                                webkit-playsinline
+                                preload="auto"
+                            >
+
+                                <source
+                                    src="assets/videos/11.mp4"
+                                    type="video/mp4"
+                                >
+
+                            </video>
+
+                        </div>
+
+
+
+                        <!-- VIDEO 12 -->
+
+                        <div
+                            class="
+                                mobile-video-card
+                                video-card
+                                relative
+                                w-full
+                                aspect-[9/16]
+                                rounded-2xl
+                                overflow-hidden
+                                bg-black/60
+                                border
+                                border-white/5
+                                flex
+                                items-center
+                                justify-center
+                                reveal
+                            "
+                            style="transition-delay: 50ms;"
+                        >
+
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/40 p-4 text-center pointer-events-none z-0">
+
+                                <span class="font-mono text-xs tracking-widest uppercase mb-2">
+                                    Video 12
+                                </span>
+
+                                <span class="text-[10px] text-gray-500">
+                                    12.mp4
+                                </span>
+
+                            </div>
+
+
+                            <video
+                                class="relative z-10 w-full h-full object-cover opacity-90"
+                                controls
+                                muted
+                                autoplay
+                                loop
+                                playsinline
+                                webkit-playsinline
+                                preload="auto"
+                            >
+
+                                <source
+                                    src="assets/videos/12.mp4"
+                                    type="video/mp4"
+                                >
+
+                            </video>
+
+                        </div>
 
                     </div>
 
@@ -650,36 +2026,77 @@
 
 
 
-        <!-- =====================================
-             CONTACT
-        ====================================== -->
+        <!-- =====================================================
+             VIP CONTACT / FOOTER
+        ====================================================== -->
 
         <section
             id="contact"
-            class="contact-section py-24 md:py-32 px-4 md:px-6 relative z-10"
+            class="
+                mobile-contact-section
+                py-32
+                px-4
+                md:px-6
+                relative
+                z-10
+            "
         >
 
             <div
-                class="contact-container max-w-6xl mx-auto glass-ultra rounded-[2.5rem] p-8 md:p-16 border-t border-gold-400/20 reveal"
+                class="
+                    mobile-contact-container
+                    max-w-6xl
+                    mx-auto
+                    glass-ultra
+                    rounded-[2.5rem]
+                    p-8
+                    md:p-16
+                    border-t
+                    border-gold-400/20
+                    reveal
+                "
             >
 
                 <div
-                    class="contact-grid grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+                    class="
+                        mobile-contact-grid
+                        grid
+                        grid-cols-1
+                        lg:grid-cols-2
+                        gap-16
+                        items-center
+                    "
                 >
 
-                    <!-- LEFT -->
+
+                    <!-- ELEVATE TEXT -->
 
                     <div>
 
                         <h2
-                            class="contact-title text-4xl md:text-5xl font-bold mb-6 text-gold-gradient tracking-tight"
+                            class="
+                                mobile-contact-title
+                                text-4xl
+                                md:text-5xl
+                                font-bold
+                                mb-6
+                                text-gold-gradient
+                                tracking-tight
+                            "
                         >
                             Elevate Your Standard.
                         </h2>
 
 
                         <p
-                            class="contact-description text-gray-400 text-lg mb-10 font-light leading-relaxed"
+                            class="
+                                mobile-contact-description
+                                text-gray-400
+                                text-lg
+                                mb-10
+                                font-light
+                                leading-relaxed
+                            "
                         >
                             Connect with our concierge team to receive
                             detailed catalogs, discuss custom manufacturing
@@ -689,7 +2106,27 @@
 
                         <a
                             href="mailto:glidexindustry@gmail.com"
-                            class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white/5 hover:bg-gold-400 text-white hover:text-black border border-gold-400/30 hover:border-gold-400 transition-all duration-500 font-medium tracking-wide"
+                            class="
+                                inline-flex
+                                items-center
+                                justify-center
+                                px-8
+                                py-4
+                                rounded-full
+                                bg-white/5
+                                hover:bg-gold-400
+                                text-white
+                                hover:text-black
+                                border
+                                border-gold-400/30
+                                hover:border-gold-400
+                                transition-all
+                                duration-500
+                                font-medium
+                                tracking-wide
+                                shadow-[0_0_20px_rgba(212,175,55,0.1)]
+                                hover:shadow-[0_0_40px_rgba(212,175,55,0.4)]
+                            "
                         >
                             Contact Concierge
                         </a>
@@ -698,19 +2135,51 @@
 
 
 
-                    <!-- RIGHT -->
+                    <!-- CONTACT DETAILS -->
 
-                    <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-6">
+
 
                         <!-- PHONE -->
 
                         <a
                             href="tel:+918866246222"
-                            class="contact-item flex items-center gap-6 p-5 rounded-2xl border border-white/5 bg-black/40 hover:bg-black/60 hover:border-gold-400/30 transition-all duration-300 group"
+                            class="
+                                mobile-contact-item
+                                flex
+                                items-center
+                                gap-6
+                                p-5
+                                rounded-2xl
+                                border
+                                border-white/5
+                                bg-black/40
+                                hover:bg-black/60
+                                hover:border-gold-400/30
+                                transition-all
+                                duration-300
+                                group
+                            "
                         >
 
                             <div
-                                class="contact-icon w-14 h-14 rounded-full bg-gradient-to-br from-gold-400/20 to-transparent flex items-center justify-center shrink-0 border border-gold-400/20"
+                                class="
+                                    mobile-contact-icon
+                                    w-14
+                                    h-14
+                                    rounded-full
+                                    bg-gradient-to-br
+                                    from-gold-400/20
+                                    to-transparent
+                                    flex
+                                    items-center
+                                    justify-center
+                                    shrink-0
+                                    group-hover:scale-110
+                                    transition-transform
+                                    border
+                                    border-gold-400/20
+                                "
                             >
 
                                 <svg
@@ -719,12 +2188,32 @@
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
                                 >
+
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                         stroke-width="1.5"
-                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                                        d="
+                                            M3 5
+                                            a2 2 0 012-2
+                                            h3.28
+                                            a1 1 0 01.948.684
+                                            l1.498 4.493
+                                            a1 1 0 01-.502 1.21
+                                            l-2.257 1.13
+                                            a11.042 11.042 0 005.516 5.516
+                                            l1.13-2.257
+                                            a1 1 0 011.21-.502
+                                            l4.493 1.498
+                                            a1 1 0 01.684.949
+                                            V19
+                                            a2 2 0 01-2 2
+                                            h-1
+                                            C9.716 21 3 14.284 3 6
+                                            V5z
+                                        "
                                     />
+
                                 </svg>
 
                             </div>
@@ -732,11 +2221,30 @@
 
                             <div>
 
-                                <p class="contact-label text-xs text-gray-500 font-medium uppercase tracking-[0.2em] mb-1">
+                                <p
+                                    class="
+                                        mobile-contact-label
+                                        text-xs
+                                        text-gray-500
+                                        font-medium
+                                        uppercase
+                                        tracking-[0.2em]
+                                        mb-1
+                                    "
+                                >
                                     Direct Line
                                 </p>
 
-                                <p class="contact-value text-xl font-light text-white tracking-wide">
+
+                                <p
+                                    class="
+                                        mobile-contact-value
+                                        text-xl
+                                        font-light
+                                        text-white
+                                        tracking-wide
+                                    "
+                                >
                                     +91 88662 46222
                                 </p>
 
@@ -750,11 +2258,42 @@
 
                         <a
                             href="mailto:glidexindustry@gmail.com"
-                            class="contact-item flex items-center gap-6 p-5 rounded-2xl border border-white/5 bg-black/40 hover:bg-black/60 hover:border-gold-400/30 transition-all duration-300 group"
+                            class="
+                                mobile-contact-item
+                                flex
+                                items-center
+                                gap-6
+                                p-5
+                                rounded-2xl
+                                border
+                                border-white/5
+                                bg-black/40
+                                hover:bg-black/60
+                                hover:border-gold-400/30
+                                transition-all
+                                duration-300
+                                group
+                            "
                         >
 
                             <div
-                                class="contact-icon w-14 h-14 rounded-full bg-gradient-to-br from-gold-400/20 to-transparent flex items-center justify-center shrink-0 border border-gold-400/20"
+                                class="
+                                    mobile-contact-icon
+                                    w-14
+                                    h-14
+                                    rounded-full
+                                    bg-gradient-to-br
+                                    from-gold-400/20
+                                    to-transparent
+                                    flex
+                                    items-center
+                                    justify-center
+                                    shrink-0
+                                    group-hover:scale-110
+                                    transition-transform
+                                    border
+                                    border-gold-400/20
+                                "
                             >
 
                                 <svg
@@ -763,10 +2302,28 @@
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
                                 >
+
                                     <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
                                         stroke-width="1.5"
-                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                        d="
+                                            M3 8
+                                            l7.89 5.26
+                                            a2 2 0 002.22 0
+                                            L21 8
+                                            M5 19
+                                            h14
+                                            a2 2 0 002-2
+                                            V7
+                                            a2 2 0 00-2-2
+                                            H5
+                                            a2 2 0 00-2 2
+                                            v10
+                                            a2 2 0 002 2z
+                                        "
                                     />
+
                                 </svg>
 
                             </div>
@@ -774,11 +2331,31 @@
 
                             <div class="min-w-0">
 
-                                <p class="contact-label text-xs text-gray-500 font-medium uppercase tracking-[0.2em] mb-1">
+                                <p
+                                    class="
+                                        mobile-contact-label
+                                        text-xs
+                                        text-gray-500
+                                        font-medium
+                                        uppercase
+                                        tracking-[0.2em]
+                                        mb-1
+                                    "
+                                >
                                     Electronic Mail
                                 </p>
 
-                                <p class="contact-value text-lg font-light text-white break-all tracking-wide">
+
+                                <p
+                                    class="
+                                        mobile-contact-value
+                                        text-lg
+                                        font-light
+                                        text-white
+                                        break-all
+                                        tracking-wide
+                                    "
+                                >
                                     glidexindustry@gmail.com
                                 </p>
 
@@ -788,14 +2365,45 @@
 
 
 
-                        <!-- HQ -->
+                        <!-- HEADQUARTERS -->
 
                         <div
-                            class="contact-item flex items-start gap-6 p-5 rounded-2xl border border-white/5 bg-black/40 hover:bg-black/60 hover:border-gold-400/30 transition-all duration-300 group"
+                            class="
+                                mobile-contact-item
+                                flex
+                                items-start
+                                gap-6
+                                p-5
+                                rounded-2xl
+                                border
+                                border-white/5
+                                bg-black/40
+                                hover:bg-black/60
+                                hover:border-gold-400/30
+                                transition-all
+                                duration-300
+                                group
+                            "
                         >
 
                             <div
-                                class="contact-icon w-14 h-14 rounded-full bg-gradient-to-br from-gold-400/20 to-transparent flex items-center justify-center shrink-0 border border-gold-400/20"
+                                class="
+                                    mobile-contact-icon
+                                    w-14
+                                    h-14
+                                    rounded-full
+                                    bg-gradient-to-br
+                                    from-gold-400/20
+                                    to-transparent
+                                    flex
+                                    items-center
+                                    justify-center
+                                    shrink-0
+                                    group-hover:scale-110
+                                    transition-transform
+                                    border
+                                    border-gold-400/20
+                                "
                             >
 
                                 <svg
@@ -804,15 +2412,31 @@
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
                                 >
+
                                     <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
                                         stroke-width="1.5"
-                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                        d="
+                                            M17.657 16.657
+                                            L13.414 20.9
+                                            a1.998 1.998 0 01-2.827 0
+                                            l-4.244-4.243
+                                            a8 8 0 1111.314 0z
+                                        "
                                     />
 
                                     <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
                                         stroke-width="1.5"
-                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                        d="
+                                            M15 11
+                                            a3 3 0 11-6 0
+                                            3 3 0 016 0z
+                                        "
                                     />
+
                                 </svg>
 
                             </div>
@@ -820,11 +2444,30 @@
 
                             <div>
 
-                                <p class="contact-label text-xs text-gray-500 font-medium uppercase tracking-[0.2em] mb-2">
+                                <p
+                                    class="
+                                        mobile-contact-label
+                                        text-xs
+                                        text-gray-500
+                                        font-medium
+                                        uppercase
+                                        tracking-[0.2em]
+                                        mb-2
+                                    "
+                                >
                                     Headquarters
                                 </p>
 
-                                <p class="text-sm text-gray-300 font-light leading-relaxed tracking-wide">
+
+                                <p
+                                    class="
+                                        text-sm
+                                        text-gray-300
+                                        font-light
+                                        leading-loose
+                                        tracking-wide
+                                    "
+                                >
                                     Survey No. 2/3, Plot no. 16,
                                     <br>
                                     Mayurpark - 2, Raveue,
@@ -845,16 +2488,32 @@
             </div>
 
 
+
             <!-- COPYRIGHT -->
 
             <div
-                class="copyright mt-16 text-center text-xs text-gray-600 tracking-widest uppercase"
+                class="
+                    mobile-copyright
+                    mt-24
+                    text-center
+                    text-xs
+                    text-gray-600
+                    tracking-widest
+                    uppercase
+                "
             >
+
                 &copy;
+
                 <script>
-                    document.write(new Date().getFullYear());
+                    document.write(
+                        new Date().getFullYear()
+                    );
                 </script>
-                Glidex Industry. All rights reserved.
+
+                Glidex Industry.
+                All rights reserved.
+
             </div>
 
         </section>
@@ -863,227 +2522,572 @@
 
 
 
-    <!-- =====================================
-         JAVASCRIPT
-    ====================================== -->
+    <!-- =========================================================
+         VIDEO + SCROLL JAVASCRIPT
+    ========================================================== -->
 
     <script>
 
-        document.addEventListener("DOMContentLoaded", () => {
-
-            /* =====================================
-               GENERATE VIDEO CARDS
-            ====================================== */
-
-            const videoGrid = document.getElementById("videoGrid");
-
-            const totalVideos = 12;
-
-            for (let i = 1; i <= totalVideos; i++) {
-
-                const card = document.createElement("div");
-
-                card.className =
-                    "video-card aspect-[9/16] reveal";
-
-                card.innerHTML = `
-
-                    <div class="absolute inset-0 flex flex-col items-center justify-center text-gold-400/30 p-3 text-center pointer-events-none z-0">
-
-                        <span class="font-mono text-[10px] tracking-widest uppercase mb-1">
-                            Video ${String(i).padStart(2, "0")}
-                        </span>
-
-                        <span class="text-[9px] text-gray-600">
-                            ${i}.mp4
-                        </span>
-
-                    </div>
-
-                    <video
-                        class="relative z-10 w-full h-full object-cover"
-                        muted
-                        playsinline
-                        loop
-                        preload="metadata"
-                        data-video="${i}"
-                    >
-
-                        <source
-                            src="assets/videos/${i}.mp4"
-                            type="video/mp4"
-                        >
-
-                        Your browser does not support HTML5 video.
-
-                    </video>
-                `;
-
-                videoGrid.appendChild(card);
-            }
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
 
 
+                /* =====================================================
+                   SCROLL REVEAL
+                ====================================================== */
 
-            /* =====================================
-               SCROLL REVEAL
-            ====================================== */
+                const reveals =
+                    document.querySelectorAll(
+                        ".reveal"
+                    );
 
-            const reveals = document.querySelectorAll(".reveal");
 
-            const revealObserver = new IntersectionObserver(
-                (entries) => {
+                const revealObserver =
+                    new IntersectionObserver(
 
-                    entries.forEach((entry) => {
+                        function (entries) {
 
-                        if (entry.isIntersecting) {
+                            entries.forEach(
+                                function (entry) {
 
-                            entry.target.classList.add("active");
+                                    if (
+                                        entry.isIntersecting
+                                    ) {
 
-                            revealObserver.unobserve(entry.target);
+                                        entry.target.classList.add(
+                                            "active"
+                                        );
 
+                                        revealObserver.unobserve(
+                                            entry.target
+                                        );
+
+                                    }
+
+                                }
+                            );
+
+                        },
+
+                        {
+                            threshold: 0.05
                         }
 
-                    });
+                    );
 
-                },
-                {
-                    threshold: 0.08
+
+                reveals.forEach(
+                    function (element) {
+
+                        revealObserver.observe(
+                            element
+                        );
+
+                    }
+                );
+
+
+
+                /* =====================================================
+                   ALL VIDEOS
+                ====================================================== */
+
+                const videos =
+                    Array.from(
+                        document.querySelectorAll(
+                            ".video-card video"
+                        )
+                    );
+
+
+                if (!videos.length) {
+                    return;
                 }
-            );
-
-
-            reveals.forEach((element) => {
-                revealObserver.observe(element);
-            });
 
 
 
-            /* =====================================
-               AUTO PLAY VIDEOS ON SCROLL
-            ====================================== */
+                /* =====================================================
+                   FORCE MUTED AUTOPLAY COMPATIBILITY
+                ====================================================== */
 
-            const videos = document.querySelectorAll(
-                ".video-card video"
-            );
+                videos.forEach(
+                    function (video) {
+
+                        video.muted = true;
+
+                        video.defaultMuted = true;
+
+                        video.setAttribute(
+                            "muted",
+                            ""
+                        );
+
+                        video.setAttribute(
+                            "playsinline",
+                            ""
+                        );
+
+                        video.setAttribute(
+                            "webkit-playsinline",
+                            ""
+                        );
+
+                        video.setAttribute(
+                            "autoplay",
+                            ""
+                        );
+
+                        video.setAttribute(
+                            "loop",
+                            ""
+                        );
+
+                    }
+                );
 
 
-            const videoObserver = new IntersectionObserver(
-                (entries) => {
 
-                    entries.forEach((entry) => {
+                /* =====================================================
+                   PLAY ONE VIDEO
+                ====================================================== */
 
-                        const video = entry.target;
-                        const card = video.closest(".video-card");
+                function playVideo(video) {
+
+                    if (!video) {
+                        return;
+                    }
 
 
-                        if (entry.isIntersecting) {
+                    video.muted = true;
 
-                            /*
-                             * Autoplay is allowed because:
-                             * muted + playsinline
-                             */
 
-                            video.play()
-                                .then(() => {
+                    const playPromise =
+                        video.play();
 
-                                    card.classList.add("playing");
 
-                                })
-                                .catch(() => {
+                    if (
+                        playPromise !== undefined
+                    ) {
+
+                        playPromise
+                            .then(
+                                function () {
+
+                                    const card =
+                                        video.closest(
+                                            ".video-card"
+                                        );
+
+                                    if (card) {
+
+                                        card.classList.add(
+                                            "is-playing"
+                                        );
+
+                                    }
+
+                                }
+                            )
+                            .catch(
+                                function () {
 
                                     /*
-                                     * Some browsers may still block
-                                     * autoplay. User can manually press play.
+                                     * Browser may block autoplay.
+                                     * The video remains available
+                                     * through its controls.
                                      */
 
-                                    card.classList.remove("playing");
+                                }
+                            );
 
-                                });
+                    }
+
+                }
+
+
+
+                /* =====================================================
+                   PAUSE VIDEO
+                ====================================================== */
+
+                function pauseVideo(video) {
+
+                    if (!video) {
+                        return;
+                    }
+
+                    video.pause();
+
+
+                    const card =
+                        video.closest(
+                            ".video-card"
+                        );
+
+
+                    if (card) {
+
+                        card.classList.remove(
+                            "is-playing"
+                        );
+
+                    }
+
+                }
+
+
+
+                /* =====================================================
+                   FIND MOST VISIBLE VIDEO
+                ====================================================== */
+
+                function getMostVisibleVideo() {
+
+                    let bestVideo = null;
+
+                    let bestVisibility = 0;
+
+
+                    videos.forEach(
+                        function (video) {
+
+                            const rect =
+                                video.getBoundingClientRect();
+
+
+                            const viewportHeight =
+                                window.innerHeight;
+
+
+                            const visibleTop =
+                                Math.max(
+                                    rect.top,
+                                    0
+                                );
+
+
+                            const visibleBottom =
+                                Math.min(
+                                    rect.bottom,
+                                    viewportHeight
+                                );
+
+
+                            const visibleHeight =
+                                Math.max(
+                                    0,
+                                    visibleBottom -
+                                    visibleTop
+                                );
+
+
+                            const videoHeight =
+                                rect.height;
+
+
+                            if (
+                                videoHeight <= 0
+                            ) {
+                                return;
+                            }
+
+
+                            const visibility =
+                                visibleHeight /
+                                videoHeight;
+
+
+                            if (
+                                visibility >
+                                bestVisibility
+                            ) {
+
+                                bestVisibility =
+                                    visibility;
+
+                                bestVideo =
+                                    video;
+
+                            }
+
+                        }
+                    );
+
+
+                    return {
+                        video: bestVideo,
+                        visibility: bestVisibility
+                    };
+
+                }
+
+
+
+                /* =====================================================
+                   UPDATE VIDEO PLAYBACK
+                ====================================================== */
+
+                let playbackTimer = null;
+
+
+                function updateVideoPlayback() {
+
+                    const result =
+                        getMostVisibleVideo();
+
+
+                    const activeVideo =
+                        result.video;
+
+
+                    const visibility =
+                        result.visibility;
+
+
+                    /*
+                     * Approximately 35% visible
+                     * is enough to start.
+                     */
+
+                    if (
+                        activeVideo &&
+                        visibility >= 0.35
+                    ) {
+
+                        videos.forEach(
+                            function (video) {
+
+                                if (
+                                    video !==
+                                    activeVideo
+                                ) {
+
+                                    pauseVideo(
+                                        video
+                                    );
+
+                                }
+
+                            }
+                        );
+
+
+                        playVideo(
+                            activeVideo
+                        );
+
+                    } else {
+
+                        videos.forEach(
+                            function (video) {
+
+                                pauseVideo(
+                                    video
+                                );
+
+                            }
+                        );
+
+                    }
+
+                }
+
+
+
+                /* =====================================================
+                   SCROLL LISTENER
+                ====================================================== */
+
+                window.addEventListener(
+                    "scroll",
+                    function () {
+
+                        if (
+                            playbackTimer
+                        ) {
+                            return;
+                        }
+
+
+                        playbackTimer =
+                            requestAnimationFrame(
+                                function () {
+
+                                    updateVideoPlayback();
+
+                                    playbackTimer =
+                                        null;
+
+                                }
+                            );
+
+                    },
+                    {
+                        passive: true
+                    }
+                );
+
+
+
+                /* =====================================================
+                   RESIZE
+                ====================================================== */
+
+                window.addEventListener(
+                    "resize",
+                    function () {
+
+                        updateVideoPlayback();
+
+                    },
+                    {
+                        passive: true
+                    }
+                );
+
+
+
+                /* =====================================================
+                   PAGE VISIBILITY
+                   Pause when user leaves browser/tab.
+                ====================================================== */
+
+                document.addEventListener(
+                    "visibilitychange",
+                    function () {
+
+                        if (
+                            document.hidden
+                        ) {
+
+                            videos.forEach(
+                                function (video) {
+
+                                    pauseVideo(
+                                        video
+                                    );
+
+                                }
+                            );
 
                         } else {
 
-                            /*
-                             * Pause video when it leaves viewport.
-                             * This saves battery and bandwidth.
-                             */
-
-                            video.pause();
-
-                            card.classList.remove("playing");
+                            updateVideoPlayback();
 
                         }
 
-                    });
-
-                },
-                {
-                    /*
-                     * Video starts when approximately
-                     * 45% of it is visible.
-                     */
-
-                    threshold: 0.45
-                }
-            );
+                    }
+                );
 
 
-            videos.forEach((video) => {
 
-                videoObserver.observe(video);
+                /* =====================================================
+                   MANUAL VIDEO PLAY
+                ====================================================== */
 
+                videos.forEach(
+                    function (video) {
+
+
+                        video.addEventListener(
+                            "play",
+                            function () {
+
+                                /*
+                                 * Keep only one video
+                                 * playing at a time.
+                                 */
+
+                                videos.forEach(
+                                    function (
+                                        otherVideo
+                                    ) {
+
+                                        if (
+                                            otherVideo !==
+                                            video
+                                        ) {
+
+                                            pauseVideo(
+                                                otherVideo
+                                            );
+
+                                        }
+
+                                    }
+                                );
+
+
+                                const card =
+                                    video.closest(
+                                        ".video-card"
+                                    );
+
+
+                                if (card) {
+
+                                    card.classList.add(
+                                        "is-playing"
+                                    );
+
+                                }
+
+                            }
+                        );
+
+
+                        video.addEventListener(
+                            "pause",
+                            function () {
+
+                                const card =
+                                    video.closest(
+                                        ".video-card"
+                                    );
+
+
+                                if (card) {
+
+                                    card.classList.remove(
+                                        "is-playing"
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+
+
+                /* =====================================================
+                   INITIAL PLAYBACK
+                ====================================================== */
 
                 /*
-                 * If user manually plays a video,
-                 * keep it playing.
+                 * Small delay allows the browser to finish
+                 * layout before checking visible videos.
                  */
 
-                video.addEventListener("play", () => {
+                setTimeout(
+                    function () {
 
-                    const card = video.closest(".video-card");
+                        updateVideoPlayback();
 
-                    card.classList.add("playing");
-
-                });
-
-
-                video.addEventListener("pause", () => {
-
-                    const card = video.closest(".video-card");
-
-                    card.classList.remove("playing");
-
-                });
-
-            });
+                    },
+                    500
+                );
 
 
-
-            /* =====================================
-               PREVENT MULTIPLE VIDEOS PLAYING
-            ====================================== */
-
-            videos.forEach((video) => {
-
-                video.addEventListener("play", () => {
-
-                    videos.forEach((otherVideo) => {
-
-                        if (otherVideo !== video) {
-
-                            otherVideo.pause();
-
-                        }
-
-                    });
-
-                });
-
-            });
-
-        });
+            }
+        );
 
     </script>
 
 </body>
+
 </html>
 ```
